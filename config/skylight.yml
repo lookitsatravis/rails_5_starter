@@ -1,0 +1,6 @@
+---
+# The authentication token for the application.
+production:
+  authentication: <%= ENV["SKYLIGHT_AUTHENTICATION"] %>
+staging:
+  authentication: <%= ENV["SKYLIGHT_AUTHENTICATION"] %>

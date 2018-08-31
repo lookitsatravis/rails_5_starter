@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>My Application</title>
+    <meta name="description" content="My Application">
+    <base href="/">
+    <meta name="fragment" content="!">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= stylesheet_pack_tag 'application', media: 'all' %>
+  </head>
+  <body>
+    <%= yield %>
+    <!-- NOSCRIPT-->
+    <noscript>
+      <h1 class="ns-header">You have JavaScript turned off!</h1>
+      <div class="ns-body">
+        <p>
+          At our company, we strive to give the absolute best web experience that we can. To accomplish this, we use cutting-edge,
+          modern libraries which require JavaScript to use. In order to use our service, you must enable JavaScript for
+          your browser.
+        </p>
+        <p>
+          If you need some help with enabling JavaScript in order to use our service, please send an email to
+          <a href="mailto:support@example.com" target="_blank">support@example.com</a>.
+        </p>
+      </div>
+      <div class="ns-footer">
+        <span class="ns-copyright">&copy; 2018 Business. All rights reserved.</span>
+      </div>
+    </noscript>
+    <!-- /NOSCRIPT -->
+    <% if !Rails.env.test? && !Rails.env.development? %>
+    <script src="https://cdn.ravenjs.com/3.24.1/raven.min.js" crossorigin="anonymous"></script>
+    <% end %>
+    <script>
+      window.$$App = {
+        config: {
+          sentryDsn: '<%= ENV['SENTRY_CLIENT_DSN'] %>',
+        },
+      };
+    </script>
+    <%= javascript_pack_tag 'application' %>
+  </body>
+</html>

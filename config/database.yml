@@ -1,0 +1,28 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 25 %>
+  timeout: 5000
+  host: <%= ENV['DB_PORT_5432_TCP_ADDR'] || ENV['DB_HOST'] %>
+  port: <%= ENV['DB_PORT_5432_TCP_PORT'] || ENV['DB_PORT'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+
+production: &production
+  <<: *default
+  database: <%= ENV["DB_PREFIX"] %>_production
+  reaping_frequency: 10
+
+staging:
+  <<: *production
+  database: <%= ENV["DB_PREFIX"] %>_staging
+  pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 10 %>
+
+development:
+  <<: *production
+  database: <%= ENV["DB_PREFIX"] %>_development
+  pool: <%= ENV["DB_POOL"] || ENV['RAILS_MAX_THREADS'] || 10 %>
+
+test:
+  <<: *default
+  database: <%= ENV["DB_PREFIX"] %>_test

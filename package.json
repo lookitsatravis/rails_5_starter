@@ -1,0 +1,27 @@
+{
+  "name": "my-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "NODE_ENV=test mocha-webpack --webpack-config ./config/webpack/test.js --require spec/javascript/setup.js spec/javascript/components/*.spec.js --recursive"
+  },
+  "dependencies": {
+    "@rails/webpacker": "3.5.5",
+    "babel-plugin-component": "^1.1.1",
+    "promise.prototype.finally": "^3.1.0",
+    "vue": "^2.5.17",
+    "vue-loader": "^14.2.3",
+    "vue-meta": "^1.5.3",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "devDependencies": {
+    "@vue/test-utils": "^1.0.0-beta.24",
+    "chai": "^4.1.2",
+    "jsdom": "^12.0.0",
+    "jsdom-global": "^3.0.2",
+    "mocha": "^5.2.0",
+    "mocha-webpack": "^1.1.0",
+    "webpack-dev-server": "^2.11.3"
+  }
+}

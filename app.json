@@ -1,0 +1,24 @@
+{
+  "environments": {
+    "test": {
+      "addons": [
+        "heroku-postgresql:in-dyno"
+      ],
+      "buildpacks": [
+        {
+          "url": "heroku/ruby"
+        }
+      ],
+      "env": {
+        "AWS_S3_BUCKET_NAME": "nopenopenope",
+        "AWS_ACCESS_KEY_ID": "ayyy",
+        "AWS_SECRET_ACCESS_KEY": "bby",
+        "AWS_S3_REGION": "us-east-1"
+      },
+      "scripts": {
+        "test-setup": "yarn",
+        "test": "bundle exec rspec && yarn run test"
+      }
+    }
+  }
+}
